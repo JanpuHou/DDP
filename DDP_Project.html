@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Fuel Economy (Miles Per Gallon) Estimator</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Fuel Economy (Miles Per Gallon) Estimator">
+  <meta name="author" content="Janpu Hou">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="./assets/css/ribbons.css"></link>
+
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>Fuel Economy (Miles Per Gallon) Estimator</h1>
+    <h2>Developing Data Products Course Project</h2>
+    <p>Janpu Hou<br/>Cyber Student of Coursera by Brian Caffo, Jeff Leek, and Roger Peng</p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  <hgroup>
+    <h2>Fuel Economy (Miles Per Gallon) Estimator</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>This estimator is based on the following &quot;multiple regression&quot; mean function:</p>
+
+<p>\[ E(Y |X) = \beta_0 + \beta_1\cdot X_1 + \beta_2\cdot X_2 + \beta_3\cdot X_3 + \beta_4\cdot X_4 \]</p>
+
+<p>Where 
+\[X_j\]
+are predictor variables in the model</p>
+
+<p>j = 1, is weight of the car in lbs</p>
+
+<p>j = 2, is number of cylinders of the car</p>
+
+<p>j = 3, is type of transmission of the car (1 = manual, 0 = automatic)</p>
+
+<p>j = 4, is time required to reach quarter miles(402 meters) in seconds</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-2" style="background:;">
+  <hgroup>
+    <h2>Using &quot;lm&quot; to built this linear model</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>while \[\beta_0, \beta_1, \beta_2, \beta_3, \beta_4\] can be obtained by fitting linear model in R:</p>
+
+<pre><code class="r">data(mtcars)
+fit &lt;- lm(mpg ~ wt+cyl+am+qsec, data = mtcars)
+summary(fit)$coefficients
+</code></pre>
+
+<pre><code>##               Estimate Std. Error    t value     Pr(&gt;|t|)
+## (Intercept) 14.9288749 12.9058943  1.1567486 0.2575073944
+## wt          -3.6438922  0.9097014 -4.0055913 0.0004360708
+## cyl         -0.3542112  0.7207060 -0.4914781 0.6270600798
+## am           2.4679373  1.7182631  1.4362977 0.1624040912
+## qsec         1.0126280  0.5233825  1.9347763 0.0635587791
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-3" style="background:;">
+  <hgroup>
+    <h2>Input widgets of Fuel Economy Estimator</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><a href="https://janpuhou.shinyapps.io/Course_Project">This Shiny App can be view from this shinyapps.io link</a></p>
+
+<p>The input side panel will require you to select cylinders number, transmission type, weight of the car and time required to reach quater miles.</p>
+
+<p><img src="input.png" alt="Input Widgets"></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-4" style="background:;">
+  <hgroup>
+    <h2>Output Panel of Fuel Economy Estimator</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><a href="https://github.com/JanpuHou/DDP">R code for this Shiny App can be view from this github.com link</a></p>
+
+<p>The output panel will show the number of your estimated mpg and compared with others from &quot;mtcars&quot;</p>
+
+<p><img src="Output.png" alt="Output Panel"></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='Fuel Economy (Miles Per Gallon) Estimator'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='Using &quot;lm&quot; to built this linear model'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='Input widgets of Fuel Economy Estimator'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='Output Panel of Fuel Economy Estimator'>
+         4
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- MathJax: Fall back to local if CDN offline but local image fonts are not supported (saves >100MB) -->
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        processEscapes: true
+      }
+    });
+  </script>
+  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <!-- <script src="https://c328740.ssl.cf1.rackcdn.com/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  </script> -->
+  <script>window.MathJax || document.write('<script type="text/x-mathjax-config">MathJax.Hub.Config({"HTML-CSS":{imageFont:null}});<\/script><script src="libraries/widgets/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"><\/script>')
+</script>
+<!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>
